@@ -2,6 +2,7 @@
   //To disable a key completely, set its value to null
   
   //basic navigation/application keys
+  "Ctrl-Q": "app-exit",
   "Ctrl-O": "session:open-file",
   "Ctrl-W": "session:close-tab",
   "Ctrl-S": "session:save-file",
@@ -31,7 +32,8 @@
   //Sublime compatibility
   "Ctrl-L": { "ace": "expandtoline" },
   "Alt-Q": "sublime:wrap",
-  "Ctrl-D": "sublime:select-or-more-after",
+  // "Ctrl-D": "sublime:select-or-more-after",
+  "Ctrl-D": { "ace": "removeline" },
   "Ctrl-P": { "command": "palette:open" },
   "Ctrl-Shift-P": { "command": "palette:open", "argument": "command" },
   "Ctrl-R": { "command": "palette:open", "argument": "reference" },
@@ -39,8 +41,8 @@
   "Ctrl-Shift-F": { "command": "searchbar:show-project-search" },
   "Ctrl-M": { "ace": "jumptomatching" },
   "Ctrl-Shift-M": { "command": "sublime:expand-to-matching" },
-  "Ctrl-Q": { "command": "ace:togglemacro" },
-  "Ctrl-Shift-Q": { "ace": "replaymacro" },
+  // "Ctrl-Q": { "command": "ace:togglemacro" },
+  // "Ctrl-Shift-Q": { "ace": "replaymacro" },
   "Ctrl--": { "command": "editor:adjust-zoom", "argument": -1 },
   "Ctrl-=": { "command": "editor:adjust-zoom", "argument": 1 },
   "Ctrl-0": { "command": "editor:default-zoom" },
