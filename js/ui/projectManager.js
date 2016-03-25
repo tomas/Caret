@@ -161,6 +161,16 @@ define([
         });
       }
     });
+
+    if (!Settings.get('user').reopenLastAdded)
+      return;
+
+    chrome.storage.local.get('lastAdded', function(data) {
+      if (!data.lastAdded) return;
+      chrome.fileSystem.restoreEntry(data.lastAdded, function(entry) {
+        if (entry) self.insertDirectory(entry);
+      })
+    })
   };
   
   var blacklistRegExp = function(config) {
@@ -181,6 +191,12 @@ define([
       chrome.fileSystem.chooseEntry({ type: "openDirectory" }, function(d) {
         if (!d) return;
         self.insertDirectory(d);
+
+        if (!Settings.get('user').reopenLastAdded)
+          return;
+
+        var entryId = chrome.fileSystem.retainEntry(d);
+        chrome.storage.local.set({ lastAdded: entryId });
       });
     },
     
@@ -225,6 +241,7 @@ define([
     removeAllDirectories: function() {
       this.directories = [];
       this.render();
+      chrome.storage.local.remove('lastAdded');
     },
     
     refresh: function() {
